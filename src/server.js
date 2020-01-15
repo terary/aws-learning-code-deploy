@@ -8,15 +8,22 @@ app.use(compression());
 app.use(express.static("src/static"));
 
 
-app.set('views', __dirname + '/views');
-// app.set('views',  './views');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
+if(process.env.NODE_ENV !== 'production') {
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jsx');
+  app.engine('jsx', require('express-react-views').createEngine());
+}else {
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'js');
+  app.engine('js', require('express-react-views').createEngine());
+
+}
 
 
 app.use("/firstssr", ssr);
 
 app.get('/', require('./routes2').index);
+app.get('/whoami', require('./routes2').whoami);
 
 
 

@@ -4,3 +4,5 @@ dev
 #.vscode
 node_modules.delete
 *.tmc.*
+*.save
+*.2b.deleted
