@@ -12,7 +12,10 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/index.js"
+            "env": {
+                "NODE_ENV": "test"
+            },
+            "program": "${workspaceFolder}/dist/server.js"
         },
         { 
             "type": "node", 
@@ -20,6 +23,21 @@
             "name": "Attach Express", 
             "port": 9229 
         },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Tests",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+            "args": [
+                "--inspect-brk",
+                "${workspaceFolder}/test/**/*.js"
+            ],
+            "env": {
+                "NODE_ENV": "test"
+            },
+            "port": 9229,
+            "internalConsoleOptions": "openOnSessionStart"
+        }
 
     ]
 }

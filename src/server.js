@@ -8,7 +8,7 @@ app.use(compression());
 app.use(express.static("src/static"));
 
 
-if(process.env.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV !== 'production' &&  process.env.NODE_ENV !== 'test') {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jsx');
   app.engine('jsx', require('express-react-views').createEngine());
@@ -27,10 +27,18 @@ app.get('/whoami', require('./routes2').whoami);
 
 
 
+if(process.env.NODE_ENV === 'test'){
+  module.exports.app = app;
+}else {
+  const port = process.env.PORT || 3030;
+  app.listen(port, function listenHandler() {
+    console.info(`Running on ${port}...`);
+  });
+}
 
-const port = process.env.PORT || 3030;
-app.listen(port, function listenHandler() {
-  console.info(`Running on ${port}...`);
-});
-
+// const port = process.env.PORT || 3030;
+// app.listen(port, function listenHandler() {
+//   console.info(`Running on ${port}...`);
+// });
+// module.exports.app = app;
 
