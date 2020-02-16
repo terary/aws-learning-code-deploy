@@ -8,3 +8,5 @@ node_modules.delete
 *.2b.deleted
 *.sh
 aws
+keys
+keys.pub
