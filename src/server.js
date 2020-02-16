@@ -36,9 +36,4 @@ if(process.env.NODE_ENV === 'test'){
   });
 }
 
-// const port = process.env.PORT || 3030;
-// app.listen(port, function listenHandler() {
-//   console.info(`Running on ${port}...`);
-// });
-// module.exports.app = app;
-
+// removed unnecessary comments.
