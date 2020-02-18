@@ -6,3 +6,8 @@ describe('Array', function() {
     });
   });
 });
+
+
+Read about loging
+required permissions
+know about billing
